@@ -41,84 +41,8 @@ const formatImageUrl = (url) => {
   return url;
 };
 
-// 初期データセット（ユーザーから提供された最新データ順）
+// 初期データセット（最新のGoogle Drive画像URL・説明文に更新）
 const initialMansonGuitars = [
-  {
-    "id": "guitar-1784703143745",
-    "name": "Verona Sky",
-    "tag": "ST Shape,Tremolo",
-    "accentColor": "from-red-500 to-rose-600",
-    "borderColor": "border-red-500 shadow-red-950/50",
-    "glowColor": "rgba(239, 68, 68, 0.5)",
-    "imageUrl": "https://drive.google.com/file/d/11bbp9xioV23_fq8rEAnMR7h_rvUxKM05/view?usp=sharing",
-    "description": "Manson製Stratocasterシャイプのシグネチャーモデル。名前の通りWill Of The People収録のVeronaの演奏用に用いられる。特徴的なのはピックアップガードが金属製になっており、ジェフバックリーが生前利用していたテレキャスターも同一で、この仕様により通常のギターより金属感ある煌びやかな音が出るという事を継承させる為に備えたと思われる。",
-    "videos": [
-      {
-        "id": "v1",
-        "song": "Verona",
-        "live": "MV",
-        "length": "04:00",
-        "youtubeUrl": "https://www.youtube.com/watch?v=NN1OtIJu_Bk"
-      },
-      {
-        "id": "v-1784734547035",
-        "song": "Verona",
-        "live": "Live Performance",
-        "youtubeUrl": "https://www.youtube.com/watch?v=HnkXWqbuQvc"
-      }
-    ]
-  },
-  {
-    "id": "guitar-1784698490576",
-    "name": "Chrome FR",
-    "tag": "Floyd Rose,Kill Switch,Sustainer",
-    "accentColor": "from-red-500 to-rose-600",
-    "borderColor": "border-red-500 shadow-red-950/50",
-    "glowColor": "rgba(239, 68, 68, 0.5)",
-    "imageUrl": "https://drive.google.com/file/d/1xfSQHx_hP5cDIq0p_OfNxpUW96EoI-6t/view?usp=sharing",
-    "description": "2017年のフェスツアーから利用開始。サスティナーとフロイドローズが備わっている事から、それ以外の特殊なデバイスを用いた楽曲以外は本機で再現できる事から近年一番利用頻度が高いギターである。Yes/Noスイッチがついているが、キルスイッチの挙動を反転させる切り替えスイッチとなっている。",
-    "videos": [
-      {
-        "id": "v1",
-        "song": "WE ARE FUCKING FUCKED",
-        "live": "Live Performance",
-        "length": "04:00",
-        "youtubeUrl": "https://www.youtube.com/watch?v=ac4E_UsmB1g"
-      },
-      {
-        "id": "v-1784734752271",
-        "song": "EUPHORIA",
-        "live": "Live Performance",
-        "youtubeUrl": "https://www.youtube.com/watch?v=zHNWEfES6XI"
-      }
-    ]
-  },
-  {
-    "id": "delorean",
-    "name": "Oryx 8-String Midnight Purple",
-    "tag": "8-String",
-    "accentColor": "from-rose-500 to-red-600",
-    "borderColor": "border-rose-500 shadow-rose-950/50",
-    "glowColor": "rgba(244, 63, 94, 0.5)",
-    "imageUrl": "https://drive.google.com/file/d/1Rr4RtsL1lKkAk8afdOwWINIgPRFrE_Op/view?usp=sharing",
-    "description": "2025年6月11日にリリースされたシングル\"UNRAVELLING\"にて初使用。　サポートメンバーであるダン ランカスターとの会話の中で8弦ギターの利用を思いつき、UNRAVELLINGのリフが閃いたとの事。",
-    "videos": [
-      {
-        "id": "2",
-        "song": "Unravelling",
-        "live": "MV",
-        "length": "04:20",
-        "youtubeUrl": "https://www.youtube.com/watch?v=jXmUJvNSSm0"
-      },
-      {
-        "id": "3",
-        "song": "Unravelling",
-        "live": "Live Performance",
-        "length": "03:50",
-        "youtubeUrl": "https://www.youtube.com/watch?v=-66qG84KR2M"
-      }
-    ]
-  },
   {
     "id": "m1d1-mirror",
     "name": "MATT BLACK",
@@ -153,13 +77,39 @@ const initialMansonGuitars = [
     ]
   },
   {
+    "id": "delorean",
+    "name": "Oryx 8-String Midnight Purple",
+    "tag": "8-String",
+    "accentColor": "from-rose-500 to-red-600",
+    "borderColor": "border-rose-500 shadow-rose-950/50",
+    "glowColor": "rgba(244, 63, 94, 0.5)",
+    "imageUrl": "https://drive.google.com/file/d/1Rr4RtsL1lKkAk8afdOwWINIgPRFrE_Op/view?usp=sharing",
+    "description": "2025年6月11日にリリースされたシングル\"UNRAVELLING\"にて初使用。　サポートメンバーであるダン ランカスターとの会話の中で8弦ギターの利用を思いつき、UNRAVELLINGのリフが閃いたとの事。",
+    "videos": [
+      {
+        "id": "2",
+        "song": "Unravelling",
+        "live": "MV",
+        "length": "04:20",
+        "youtubeUrl": "https://www.youtube.com/watch?v=jXmUJvNSSm0"
+      },
+      {
+        "id": "3",
+        "song": "Unravelling",
+        "live": "Live Performance",
+        "length": "03:50",
+        "youtubeUrl": "https://www.youtube.com/watch?v=-66qG84KR2M"
+      }
+    ]
+  },
+  {
     "id": "guitar-1784700031335",
     "name": "Oryx",
     "tag": "Fanned Frets",
     "accentColor": "from-red-500 to-rose-600",
     "borderColor": "border-red-500 shadow-red-950/50",
     "glowColor": "rgba(239, 68, 68, 0.5)",
-    "imageUrl": "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800&auto=format&fit=crop",
+    "imageUrl": "https://drive.google.com/file/d/19IGnfV077OlOX4dZ1gi9gGsgGV9Dx4pP/view?usp=sharing",
     "description": "初めてファンフレット仕様（フレットを扇状（斜め）に配置し、低音弦側を長く、高音弦側を短く設計）が施されたギター。これにより、太い低音弦のピッチ（音程）が安定し、たるみやビビリを防ぎ、低音弦のダウンチューニングの最適化が期待できる。　アルバム\"Will Of The People\"で特に利用され、Won't Stand Down,Kill Or Be Killed等のダウンチューニングかつヘビィな曲で利用された。",
     "videos": [
       {
@@ -172,13 +122,63 @@ const initialMansonGuitars = [
     ]
   },
   {
+    "id": "guitar-1784698490576",
+    "name": "Chrome FR",
+    "tag": "Floyd Rose,Kill Switch,Sustainer",
+    "accentColor": "from-red-500 to-rose-600",
+    "borderColor": "border-red-500 shadow-red-950/50",
+    "glowColor": "rgba(239, 68, 68, 0.5)",
+    "imageUrl": "https://drive.google.com/file/d/1xfSQHx_hP5cDIq0p_OfNxpUW96EoI-6t/view?usp=sharing",
+    "description": "2017年のフェスツアーから利用開始。サスティナーとフロイドローズが備わっている事から、それ以外の特殊なデバイスを用いた楽曲以外は本機で再現できる事から近年一番利用頻度が高いギターである。Yes/Noスイッチがついているが、キルスイッチの挙動を反転させる切り替えスイッチとなっている。",
+    "videos": [
+      {
+        "id": "v1",
+        "song": "WE ARE FUCKING FUCKED",
+        "live": "Live Performance",
+        "length": "04:00",
+        "youtubeUrl": "https://www.youtube.com/watch?v=ac4E_UsmB1g"
+      },
+      {
+        "id": "v-1784734752271",
+        "song": "EUPHORIA",
+        "live": "Live Performance",
+        "youtubeUrl": "https://www.youtube.com/watch?v=zHNWEfES6XI"
+      }
+    ]
+  },
+  {
+    "id": "guitar-1784703143745",
+    "name": "Verona Sky",
+    "tag": "ST Shape,Tremolo",
+    "accentColor": "from-red-500 to-rose-600",
+    "borderColor": "border-red-500 shadow-red-950/50",
+    "glowColor": "rgba(239, 68, 68, 0.5)",
+    "imageUrl": "https://drive.google.com/file/d/11bbp9xioV23_fq8rEAnMR7h_rvUxKM05/view?usp=sharing",
+    "description": "Manson製Stratocasterシャイプのシグネチャーモデル。名前の通りWill Of The People収録のVeronaの演奏用に用いられる。特徴的なのはピックアップガードが金属製になっており、ジェフバックリーが生前利用していたテレキャスターも同一で、この仕様により通常のギターより金属感ある煌びやかな音が出るという事を継承させる為に備えたと思われる。",
+    "videos": [
+      {
+        "id": "v1",
+        "song": "Verona",
+        "live": "MV",
+        "length": "04:00",
+        "youtubeUrl": "https://www.youtube.com/watch?v=NN1OtIJu_Bk"
+      },
+      {
+        "id": "v-1784734547035",
+        "song": "Verona",
+        "live": "Live Performance",
+        "youtubeUrl": "https://www.youtube.com/watch?v=HnkXWqbuQvc"
+      }
+    ]
+  },
+  {
     "id": "guitar-1784699177190",
     "name": "M1D1 Stealth",
     "tag": "Sustainer,XY MIDI Pad",
     "accentColor": "from-red-500 to-rose-600",
     "borderColor": "border-red-500 shadow-red-950/50",
     "glowColor": "rgba(239, 68, 68, 0.5)",
-    "imageUrl": "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800&auto=format&fit=crop",
+    "imageUrl": "https://drive.google.com/file/d/1sSznbQSRiQEN2cFC9Sak7HO9NhUfwxyu/view?usp=sharing",
     "description": "2015年から現在まで何度かのパーツのマイナーチェンジを経てKAOSS PADを使う曲、主にSupermassive Black Holeをプレイする際に利用している。ギターのパッド自体はあくまでコントローラーであり、音の出力や音色は、接続先であるKAOSS PADから出力されている。",
     "videos": [
       {
@@ -195,7 +195,7 @@ const initialMansonGuitars = [
 export default function App() {
   const [mansonGuitars, setMansonGuitars] = useState(() => {
     try {
-      const saved = localStorage.getItem('muse_guitars_data_v4');
+      const saved = localStorage.getItem('muse_guitars_data_v5');
       if (saved) {
         return JSON.parse(saved);
       }
@@ -212,7 +212,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('muse_guitars_data_v4', JSON.stringify(mansonGuitars));
+      localStorage.setItem('muse_guitars_data_v5', JSON.stringify(mansonGuitars));
     } catch (e) {
       console.error(e);
     }
@@ -326,7 +326,7 @@ export default function App() {
     }
     setMansonGuitars(shuffled);
     try {
-      localStorage.removeItem('muse_guitars_data_v4');
+      localStorage.removeItem('muse_guitars_data_v5');
     } catch (e) {}
     setSelectedTagFilter('ALL');
   };
