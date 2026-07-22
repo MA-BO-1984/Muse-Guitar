@@ -18,6 +18,29 @@ const getYouTubeEmbedUrl = (url) => {
   return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
 };
 
+// Googleドライブの共有リンクから画像直リンク用URLを生成するヘルパー関数
+const formatImageUrl = (url) => {
+  if (!url) return '';
+  if (url.includes('drive.google.com')) {
+    let fileId = '';
+    const match = url.match(/\/d\/([^\/]+)/);
+    if (match) {
+      fileId = match[1];
+    } else {
+      try {
+        const urlParams = new URLSearchParams(url.split('?')[1]);
+        fileId = urlParams.get('id');
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    if (fileId) {
+      return `https://lh3.googleusercontent.com/d/${fileId}`;
+    }
+  }
+  return url;
+};
+
 // 初期データセット（ユーザーから提供された最新データ順）
 const initialMansonGuitars = [
   {
@@ -484,7 +507,7 @@ export default function App() {
                       className="p-3 bg-[#110507] border border-red-900/50 rounded-xl flex items-center justify-between gap-3"
                     >
                       <div className="flex items-center gap-3 overflow-hidden">
-                        <img src={g.imageUrl} alt={g.name} className="w-10 h-10 object-contain rounded bg-black/60 p-1 flex-shrink-0" />
+                        <img src={formatImageUrl(g.imageUrl)} alt={g.name} className="w-10 h-10 object-contain rounded bg-black/60 p-1 flex-shrink-0" />
                         <div className="truncate">
                           <div className="font-orbitron text-xs font-bold text-red-200 truncate">{g.name}</div>
                           <div className="text-[10px] font-chakra text-red-400/70 truncate">{g.tag}</div>
@@ -591,7 +614,7 @@ export default function App() {
 
                     <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-black/90 border border-red-950 flex items-center justify-center p-2 group-hover:border-red-800/60 transition-colors">
                       <img
-                        src={guitar.imageUrl}
+                        src={formatImageUrl(guitar.imageUrl)}
                         alt={guitar.name}
                         className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]"
                       />
