@@ -50,7 +50,7 @@ const initialMansonGuitars = [
     "accentColor": "from-red-500 to-rose-600",
     "borderColor": "border-red-500 shadow-red-950/50",
     "glowColor": "rgba(239, 68, 68, 0.5)",
-    "imageUrl": "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800&auto=format&fit=crop",
+    "imageUrl": "https://drive.google.com/file/d/11bbp9xioV23_fq8rEAnMR7h_rvUxKM05/view?usp=sharing",
     "description": "Manson製Stratocasterシャイプのシグネチャーモデル。名前の通りWill Of The People収録のVeronaの演奏用に用いられる。特徴的なのはピックアップガードが金属製になっており、ジェフバックリーが生前利用していたテレキャスターも同一で、この仕様により通常のギターより金属感ある煌びやかな音が出るという事を継承させる為に備えたと思われる。",
     "videos": [
       {
@@ -59,6 +59,12 @@ const initialMansonGuitars = [
         "live": "MV",
         "length": "04:00",
         "youtubeUrl": "https://www.youtube.com/watch?v=NN1OtIJu_Bk"
+      },
+      {
+        "id": "v-1784734547035",
+        "song": "Verona",
+        "live": "Live Performance",
+        "youtubeUrl": "https://www.youtube.com/watch?v=HnkXWqbuQvc"
       }
     ]
   },
@@ -69,15 +75,21 @@ const initialMansonGuitars = [
     "accentColor": "from-red-500 to-rose-600",
     "borderColor": "border-red-500 shadow-red-950/50",
     "glowColor": "rgba(239, 68, 68, 0.5)",
-    "imageUrl": "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800&auto=format&fit=crop",
+    "imageUrl": "https://drive.google.com/file/d/1xfSQHx_hP5cDIq0p_OfNxpUW96EoI-6t/view?usp=sharing",
     "description": "2017年のフェスツアーから利用開始。サスティナーとフロイドローズが備わっている事から、それ以外の特殊なデバイスを用いた楽曲以外は本機で再現できる事から近年一番利用頻度が高いギターである。Yes/Noスイッチがついているが、キルスイッチの挙動を反転させる切り替えスイッチとなっている。",
     "videos": [
       {
         "id": "v1",
-        "song": "Sample Song",
+        "song": "WE ARE FUCKING FUCKED",
         "live": "Live Performance",
         "length": "04:00",
-        "youtubeUrl": "https://www.youtube.com/watch?v=8tugqHunwDA"
+        "youtubeUrl": "https://www.youtube.com/watch?v=ac4E_UsmB1g"
+      },
+      {
+        "id": "v-1784734752271",
+        "song": "EUPHORIA",
+        "live": "Live Performance",
+        "youtubeUrl": "https://www.youtube.com/watch?v=zHNWEfES6XI"
       }
     ]
   },
@@ -88,29 +100,22 @@ const initialMansonGuitars = [
     "accentColor": "from-rose-500 to-red-600",
     "borderColor": "border-rose-500 shadow-rose-950/50",
     "glowColor": "rgba(244, 63, 94, 0.5)",
-    "imageUrl": "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRI2nnWbJC0zKyIcCiWWIWKxrGaIEhpRLHVXDB0emXbFD8asPcS5Yj6pMjfh6OCEKSkzvDcP-VlAahTA18",
+    "imageUrl": "https://drive.google.com/file/d/1Rr4RtsL1lKkAk8afdOwWINIgPRFrE_Op/view?usp=sharing",
     "description": "2025年6月11日にリリースされたシングル\"UNRAVELLING\"にて初使用。　サポートメンバーであるダン ランカスターとの会話の中で8弦ギターの利用を思いつき、UNRAVELLINGのリフが閃いたとの事。",
     "videos": [
       {
-        "id": "1",
-        "song": "Plug In Baby",
-        "live": "Live Performance",
-        "length": "03:45",
-        "youtubeUrl": "https://youtu.be/dbB-mZKt33w"
-      },
-      {
         "id": "2",
-        "song": "Bliss",
-        "live": "Live Performance",
+        "song": "Unravelling",
+        "live": "MV",
         "length": "04:20",
-        "youtubeUrl": "https://youtu.be/gXN9acC9KMQ"
+        "youtubeUrl": "https://www.youtube.com/watch?v=jXmUJvNSSm0"
       },
       {
         "id": "3",
-        "song": "Hysteria",
+        "song": "Unravelling",
         "live": "Live Performance",
         "length": "03:50",
-        "youtubeUrl": "https://youtu.be/3dm_5qWWDV8"
+        "youtubeUrl": "https://www.youtube.com/watch?v=-66qG84KR2M"
       }
     ]
   },
@@ -121,29 +126,29 @@ const initialMansonGuitars = [
     "accentColor": "from-red-500 to-rose-600",
     "borderColor": "border-red-500 shadow-red-950/50",
     "glowColor": "rgba(239, 68, 68, 0.5)",
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuK_x9TTHh965scMkykCTDpWbazqD9xm2EBG-jXuphvQ&s=10",
+    "imageUrl": "https://drive.google.com/file/d/1LvixnuycCXlIGzGapLkI8y0HEDOJOzq-/view?usp=drive_link",
     "description": "2012年(The 2nd Law)から利用され、サスティナー(磁力と電力で弦振動を永続させる装置)を備えたスタンダードなモデル。\n利用頻度が高く大量生産されており、ギター破壊パフォーマンスにも用いられこれまで何十台も破壊されてきた。\n時期によって、ピックアップ、ブリッジ、ペグ等パーツ類が変更されている。",
     "videos": [
       {
         "id": "1",
-        "song": "Supermassive Black Hole",
+        "song": "Psycho",
         "live": "Live Performance",
         "length": "04:15",
-        "youtubeUrl": "https://www.youtube.com/watch?v=8tugqHunwDA"
+        "youtubeUrl": "https://youtu.be/bQJqrxIVKAI?si=JyVg78_aNPLZ4JoG"
       },
       {
         "id": "2",
-        "song": "New Born",
+        "song": "Reapers",
         "live": "Live Performance",
         "length": "06:30",
-        "youtubeUrl": "https://youtu.be/0J2QdDbelmY"
+        "youtubeUrl": "https://www.youtube.com/watch?v=XHH4XWAD9pw"
       },
       {
         "id": "3",
-        "song": "Starlight",
+        "song": "Uprising",
         "live": "Live Performance",
         "length": "04:00",
-        "youtubeUrl": "https://youtu.be/Pgum6OCIVME"
+        "youtubeUrl": "https://www.youtube.com/watch?v=zO7k53pXw-o&t=105s"
       }
     ]
   },
@@ -178,7 +183,7 @@ const initialMansonGuitars = [
     "videos": [
       {
         "id": "v1",
-        "song": "Sample Song",
+        "song": "Supermassive Black Hole",
         "live": "Live Performance",
         "length": "04:00",
         "youtubeUrl": "https://www.youtube.com/watch?v=8tugqHunwDA"
@@ -190,7 +195,7 @@ const initialMansonGuitars = [
 export default function App() {
   const [mansonGuitars, setMansonGuitars] = useState(() => {
     try {
-      const saved = localStorage.getItem('muse_guitars_data');
+      const saved = localStorage.getItem('muse_guitars_data_v4');
       if (saved) {
         return JSON.parse(saved);
       }
@@ -207,7 +212,7 @@ export default function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem('muse_guitars_data', JSON.stringify(mansonGuitars));
+      localStorage.setItem('muse_guitars_data_v4', JSON.stringify(mansonGuitars));
     } catch (e) {
       console.error(e);
     }
@@ -321,7 +326,7 @@ export default function App() {
     }
     setMansonGuitars(shuffled);
     try {
-      localStorage.removeItem('muse_guitars_data');
+      localStorage.removeItem('muse_guitars_data_v4');
     } catch (e) {}
     setSelectedTagFilter('ALL');
   };
