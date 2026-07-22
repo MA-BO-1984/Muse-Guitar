@@ -601,14 +601,7 @@ export default function App() {
                         : 'bg-[#14080b]/80 border-red-950/80 hover:border-red-900/60 hover:bg-red-950/30'
                     }`}
                   >
-                    <div className="flex justify-between items-start gap-2">
-                      <div className="flex flex-wrap gap-1.5">
-                        {tagsList.map((t, i) => (
-                          <span key={i} className="text-[10px] font-chakra font-bold text-red-400/90 tracking-wider bg-red-950/80 px-2 py-0.5 rounded border border-red-900/50 uppercase">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
+                    <div className="flex justify-end items-center min-h-[20px]">
                       {isSelected && (
                         <span className="text-[10px] font-orbitron font-bold text-rose-200 bg-red-950 border border-red-500/80 px-2.5 py-0.5 rounded-full uppercase tracking-widest animate-pulse wow-signal-glow flex-shrink-0">
                           ACTIVE
@@ -624,10 +617,19 @@ export default function App() {
                       />
                     </div>
 
-                    <div className="space-y-1">
+                    <div className="space-y-2">
                       <h3 className={`font-orbitron font-bold text-base md:text-lg tracking-wide ${isSelected ? 'text-red-200 wow-signal-glow' : 'text-red-300'}`}>
                         {guitar.name}
                       </h3>
+
+                      {/* ギター名の下部にタグ一覧を配置 */}
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {tagsList.map((t, i) => (
+                          <span key={i} className="text-[10px] font-chakra font-bold text-red-400/90 tracking-wider bg-red-950/80 px-2 py-0.5 rounded border border-red-900/50 uppercase">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </button>
                 );
