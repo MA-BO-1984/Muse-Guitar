@@ -284,7 +284,6 @@ export default function App() {
           id: 'v1',
           song: 'Sample Song',
           live: 'Live Performance',
-          length: '04:00',
           youtubeUrl: 'https://www.youtube.com/watch?v=8tugqHunwDA',
         },
       ],
@@ -710,7 +709,6 @@ export default function App() {
                             </div>
                           </div>
                           <div className="flex items-center gap-2 flex-shrink-0">
-                            <span className="text-[10px] font-mono text-red-400/60">{vid.length}</span>
                             <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors ${isVidSelected ? 'bg-red-600 text-white' : 'bg-red-950 text-red-500 group-hover:bg-red-900'}`}>
                               <svg className="w-3 h-3 fill-current ml-0.5" viewBox="0 0 24 24">
                                 <path d="M8 5v14l11-7z" />
@@ -793,7 +791,6 @@ function GuitarEditModal({ guitar, onSave, onClose }) {
       id: `v-${Date.now()}`,
       song: 'New Song',
       live: 'Live Performance',
-      length: '04:00',
       youtubeUrl: '',
     };
     setFormData((prev) => ({ ...prev, videos: [...prev.videos, newVideo] }));
@@ -895,7 +892,7 @@ function GuitarEditModal({ guitar, onSave, onClose }) {
                     削除
                   </button>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <input
                     type="text"
                     placeholder="曲名 (Song)"
@@ -909,13 +906,6 @@ function GuitarEditModal({ guitar, onSave, onClose }) {
                     placeholder="演奏場所/イベント (Live)"
                     value={vid.live}
                     onChange={(e) => handleVideoChange(idx, 'live', e.target.value)}
-                    className="bg-[#140608] border border-red-950 rounded p-1.5 text-red-200"
-                  />
-                  <input
-                    type="text"
-                    placeholder="2026/07/22"
-                    value={vid.length}
-                    onChange={(e) => handleVideoChange(idx, 'length', e.target.value)}
                     className="bg-[#140608] border border-red-950 rounded p-1.5 text-red-200"
                   />
                 </div>
