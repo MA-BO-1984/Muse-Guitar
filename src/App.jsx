@@ -583,7 +583,6 @@ export default function App() {
                         type="text"
                         value={adminIdInput}
                         onChange={(e) => setAdminIdInput(e.target.value)}
-                        placeholder="Admin"
                         className="w-full bg-[#0b0304] border border-red-900 rounded p-2.5 text-red-200 text-xs font-chakra focus:outline-none focus:border-red-500"
                         required
                       />
@@ -594,7 +593,6 @@ export default function App() {
                         type="password"
                         value={adminPassInput}
                         onChange={(e) => setAdminPassInput(e.target.value)}
-                        placeholder="••••••••"
                         className="w-full bg-[#0b0304] border border-red-900 rounded p-2.5 text-red-200 text-xs font-chakra focus:outline-none focus:border-red-500"
                         required
                       />
