@@ -18,7 +18,7 @@ const getYouTubeEmbedUrl = (url) => {
   return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
 };
 
-// 初期データセット
+// 初期データセット（ユーザーから提供された6件の最新データ）
 const initialMansonGuitars = [
   {
     "id": "delorean",
@@ -326,6 +326,10 @@ export default function App() {
           text-shadow: 0 0 12px rgba(239, 68, 68, 0.7), 0 0 24px rgba(225, 29, 72, 0.4);
         }
 
+        .wow-border-glow {
+          box-shadow: 0 0 18px var(--glow-color, rgba(239, 68, 68, 0.4));
+        }
+
         .cyber-scroll::-webkit-scrollbar {
           height: 6px;
           width: 6px;
@@ -346,116 +350,309 @@ export default function App() {
       {/* Header */}
       <header className="p-6 md:p-10 border-b border-red-950/70 bg-[#120709]/90 backdrop-blur-md relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-60"></div>
-        <div className="max-w-[1600px] mx-auto text-center md:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/50 border border-red-800/60 text-[11px] font-chakra text-red-400 mb-2 tracking-widest uppercase">
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-            SIGNAL DETECTED // 6EQUJ5
+        <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/50 border border-red-800/60 text-[11px] font-chakra text-red-400 mb-2 tracking-widest uppercase">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+              SIGNAL DETECTED // 6EQUJ5
+            </div>
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-wider font-orbitron wow-signal-glow bg-gradient-to-r from-red-500 via-rose-200 to-red-600 bg-clip-text text-transparent">
+              MUSE GUITAR GALLERY
+            </h1>
+            <p className="text-red-400/90 font-chakra text-xs md:text-sm mt-1 tracking-wide">
+              MATTHEW BELLAMY SIGNATURE CUSTOM MODELS & LIVE PERFORMANCES
+            </p>
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-wider font-orbitron wow-signal-glow bg-gradient-to-r from-red-500 via-rose-200 to-red-600 bg-clip-text text-transparent">
-            MUSE GUITAR GALLERY
-          </h1>
-          <p className="text-red-400/90 font-chakra text-xs md:text-sm mt-1 tracking-wide">
-            MATTHEW BELLAMY SIGNATURE CUSTOM MODELS & LIVE PERFORMANCES
-          </p>
+          
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={() => {
+                if (!isManagerOpen && !isAdminAuthenticated) {
+                  setAdminIdInput('');
+                  setAdminPassInput('');
+                  setAuthError('');
+                }
+                setIsManagerOpen(!isManagerOpen);
+              }}
+              className="px-4 py-2 bg-red-950/80 hover:bg-red-900/80 border border-red-600 text-red-200 text-xs font-chakra font-bold rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-red-950/50"
+            >
+              <span>⚙️</span>
+              <span>{isManagerOpen ? 'CLOSE MANAGER' : 'Admin Mode'}</span>
+            </button>
+          </div>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="p-4 md:p-8 space-y-10 max-w-[1600px] mx-auto">
-        {/* Tag Filtering & Models Display */}
-        <section className="space-y-4">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <h2 className="text-xl font-bold font-orbitron tracking-widest text-red-500 flex items-center gap-2 wow-signal-glow px-1">
-              <span className="text-red-400">[01]</span> SELECT MODEL ({filteredGuitars.length})
-            </h2>
 
-            {/* Tag Filter Buttons */}
-            <div className="flex items-center gap-2 flex-wrap">
-              <button
-                onClick={() => setSelectedTagFilter('ALL')}
-                className={`px-3 py-1 rounded-full text-xs font-chakra font-semibold transition-all ${
-                  selectedTagFilter === 'ALL'
-                    ? 'bg-red-600 text-white shadow-md shadow-red-950'
-                    : 'bg-red-950/40 text-red-400 border border-red-900/50 hover:bg-red-900/50'
-                }`}
-              >
-                ALL ({mansonGuitars.length})
-              </button>
-              {allAvailableTags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => setSelectedTagFilter(tag)}
-                  className={`px-3 py-1 rounded-full text-xs font-chakra font-semibold transition-all ${
-                    selectedTagFilter === tag
-                      ? 'bg-red-600 text-white shadow-md shadow-red-950'
-                      : 'bg-red-950/40 text-red-400 border border-red-900/50 hover:bg-red-900/50'
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          </div>
+        {/* 管理パネル または ログインモーダル */}
+        {}
+        {isManagerOpen && (
+          <section className="bg-[#180a0d] border border-red-600/60 rounded-2xl p-6 space-y-6 shadow-2xl relative animate-fadeIn">
+            {!isAdminAuthenticated ? (
+              <div className="max-w-md mx-auto py-6 space-y-4 text-center">
+                <div className="inline-block p-3 rounded-full bg-red-950/80 border border-red-800 text-xl mb-1">🔒</div>
+                <h3 className="text-xl font-bold font-orbitron text-red-200">ADMIN AUTHENTICATION REQUIRED</h3>
+                <p className="text-xs font-chakra text-red-400">
+                  管理モードにアクセスするには認証情報の入力が必要です。
+                </p>
 
-          {/* Guitar Cards - Horizontal Scroll */}
-          <div className="flex overflow-x-auto gap-5 pb-4 cyber-scroll snap-x snap-mandatory">
-            {filteredGuitars.map((guitar) => {
-              const isSelected = selectedGuitar?.id === guitar.id;
-              return (
-                <div
-                  key={guitar.id}
-                  onClick={() => handleSelectGuitar(guitar)}
-                  className={`cursor-pointer group relative bg-[#120709] border rounded-2xl p-5 transition-all duration-300 flex flex-col justify-between w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-start ${
-                    isSelected
-                      ? 'border-red-500 shadow-xl shadow-red-950/60 bg-[#19090c]'
-                      : 'border-red-950 hover:border-red-800/80 hover:bg-[#15080b]'
-                  }`}
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (adminIdInput === 'Admin' && adminPassInput === 'muse1984') {
+                      setIsAdminAuthenticated(true);
+                      setAuthError('');
+                    } else {
+                      setAuthError('IDまたはパスワードが正しくありません。');
+                    }
+                  }}
+                  className="space-y-3 pt-2 text-left"
                 >
-                  <div className="space-y-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <h3 className="text-lg font-bold font-orbitron text-red-100 tracking-wider group-hover:text-red-400 transition-colors">
-                        {guitar.name}
+                  <div>
+                    <label className="block text-xs font-chakra text-red-400 mb-1">ID</label>
+                    <input
+                      type="text"
+                      value={adminIdInput}
+                      onChange={(e) => setAdminIdInput(e.target.value)}
+                      placeholder="Admin"
+                      className="w-full bg-[#0b0304] border border-red-900 rounded p-2.5 text-red-200 text-xs font-chakra focus:outline-none focus:border-red-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-chakra text-red-400 mb-1">PASSWORD</label>
+                    <input
+                      type="password"
+                      value={adminPassInput}
+                      onChange={(e) => setAdminPassInput(e.target.value)}
+                      placeholder="••••••••"
+                      className="w-full bg-[#0b0304] border border-red-900 rounded p-2.5 text-red-200 text-xs font-chakra focus:outline-none focus:border-red-500"
+                      required
+                    />
+                  </div>
+
+                  {authError && (
+                    <div className="p-2.5 bg-red-950/80 border border-red-700 text-red-300 text-xs font-chakra rounded text-center">
+                      {authError}
+                    </div>
+                  )}
+
+                  <div className="flex gap-2 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setIsManagerOpen(false)}
+                      className="w-1/2 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 rounded font-bold text-xs font-chakra"
+                    >
+                      キャンセル
+                    </button>
+                    <button
+                      type="submit"
+                      className="w-1/2 py-2.5 bg-red-600 hover:bg-red-500 text-white rounded font-bold text-xs font-chakra shadow-lg shadow-red-950"
+                    >
+                      ログイン
+                    </button>
+                  </div>
+                </form>
+              </div>
+            ) : (
+              <>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-red-900/60 pb-4 gap-4">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-xl font-bold font-orbitron text-red-200 flex items-center gap-2">
+                        <span>⚙️</span> DATA MANAGEMENT PANEL
                       </h3>
-                      {guitar.tag && (
-                        <div className="flex flex-wrap gap-1 justify-end">
-                          {guitar.tag.split(',').map((t, i) => (
-                            <span
-                              key={i}
-                              className="px-2 py-0.5 rounded text-[10px] font-chakra font-bold bg-red-950/80 border border-red-800/60 text-red-300"
-                            >
-                              {t.trim()}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+                      <span className="text-[10px] bg-red-950 border border-red-600 text-red-300 px-2 py-0.5 rounded font-mono">AUTHENTICATED</span>
                     </div>
-
-                    <div className="aspect-[4/3] rounded-xl overflow-hidden bg-black/60 border border-red-950/60 p-2 flex items-center justify-center">
-                      <img
-                        src={guitar.imageUrl}
-                        alt={guitar.name}
-                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-
-                    <p className="text-xs font-chakra text-red-300/80 leading-relaxed line-clamp-3">
-                      {guitar.description}
+                    <p className="text-xs font-chakra text-red-400 mt-0.5">
+                      ギターの追加、編集、削除や、JSONデータのエクスポートを行えます。
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-red-950/60 flex items-center justify-between text-xs font-chakra text-red-400/80">
-                    <span>{guitar.videos?.length || 0} TRACKS AVAILABLE</span>
-                    <span className={`font-bold transition-transform ${isSelected ? 'text-red-400 translate-x-1' : 'group-hover:translate-x-1'}`}>
-                      VIEW DETAILS →
-                    </span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      onClick={handleAddNewGuitar}
+                      className="px-3 py-1.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs font-chakra rounded-md transition-colors flex items-center gap-1"
+                    >
+                      <span>+</span> ギターを新規追加
+                    </button>
+                    <button
+                      onClick={handleCopyJSON}
+                      className="px-3 py-1.5 bg-red-950 hover:bg-red-900 border border-red-700 text-red-300 font-bold text-xs font-chakra rounded-md transition-colors"
+                    >
+                      {copySuccess ? '✓ JSONコピー完了!' : '📋 JSON出力（コピー）'}
+                    </button>
+                    <button
+                      onClick={handleResetData}
+                      className="px-3 py-1.5 bg-zinc-900 hover:bg-red-950 border border-zinc-700 text-zinc-400 hover:text-red-300 font-bold text-xs font-chakra rounded-md transition-colors"
+                    >
+                      🔄 初期化
+                    </button>
+                    <button
+                      onClick={() => setIsAdminAuthenticated(false)}
+                      className="px-3 py-1.5 bg-zinc-900 hover:bg-zinc-800 text-red-400 font-bold text-xs font-chakra rounded-md transition-colors"
+                    >
+                      ログアウト
+                    </button>
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[350px] overflow-y-auto cyber-scroll pr-2">
+                  {mansonGuitars.map((g) => (
+                    <div
+                      key={g.id}
+                      className="p-3 bg-[#110507] border border-red-900/50 rounded-xl flex items-center justify-between gap-3"
+                    >
+                      <div className="flex items-center gap-3 overflow-hidden">
+                        <img src={g.imageUrl} alt={g.name} className="w-10 h-10 object-contain rounded bg-black/60 p-1 flex-shrink-0" />
+                        <div className="truncate">
+                          <div className="font-orbitron text-xs font-bold text-red-200 truncate">{g.name}</div>
+                          <div className="text-[10px] font-chakra text-red-400/70 truncate">{g.tag}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1 flex-shrink-0">
+                        <button
+                          onClick={() => setEditingGuitar(g)}
+                          className="p-1.5 text-xs bg-red-950 hover:bg-red-800 text-red-200 rounded border border-red-800/60"
+                          title="編集"
+                        >
+                          ✏️
+                        </button>
+                        <button
+                          onClick={() => handleDeleteGuitar(g.id)}
+                          className="p-1.5 text-xs bg-red-950 hover:bg-red-900 text-red-400 hover:text-red-200 rounded border border-red-800/60"
+                          title="削除"
+                        >
+                          🗑️
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </section>
+        )}
+
+        {/* ギター選択＆タグフィルターセクション */}
+        {}
+        <section className="space-y-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between px-1 gap-3">
+            <h2 className="text-xl font-bold font-orbitron tracking-widest text-red-500 flex items-center gap-2 wow-signal-glow">
+              <span className="text-red-400">[01]</span> SELECT GUITAR MODEL
+            </h2>
+
+            {/* タグフィルターボタン群 */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs font-chakra text-red-400/80 mr-1">FILTER:</span>
+              <button
+                onClick={() => setSelectedTagFilter('ALL')}
+                className={`px-3 py-1 rounded-full text-xs font-chakra font-bold transition-all ${
+                  selectedTagFilter === 'ALL'
+                    ? 'bg-red-600 text-white shadow-md shadow-red-950'
+                    : 'bg-[#14080b] border border-red-950 text-red-400 hover:border-red-800'
+                }`}
+              >
+                ALL
+              </button>
+              {allAvailableTags.map((tag) => {
+                const isActive = selectedTagFilter.toLowerCase() === tag.toLowerCase();
+                return (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedTagFilter(tag)}
+                    className={`px-3 py-1 rounded-full text-xs font-chakra font-bold transition-all uppercase ${
+                      isActive
+                        ? 'bg-red-600 text-white shadow-md shadow-red-950'
+                        : 'bg-[#14080b] border border-red-950 text-red-400 hover:border-red-800'
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                );
+              })}
+            </div>
           </div>
+
+          {filteredGuitars.length === 0 ? (
+            <div className="p-12 text-center bg-[#14080b]/50 border border-red-950 rounded-2xl text-red-400 font-chakra text-sm">
+              該当するタグを持つギターモデルが見つかりませんでした。
+            </div>
+          ) : (
+            <div className="flex gap-4 pb-4 overflow-x-auto snap-x snap-mandatory cyber-scroll">
+              {filteredGuitars.map((guitar) => {
+                const isSelected = selectedGuitar?.id === guitar.id;
+                const tagsList = guitar.tag ? guitar.tag.split(',').map((t) => t.trim()).filter(Boolean) : [];
+
+                return (
+                  <button
+                    key={guitar.id}
+                    onClick={() => handleSelectGuitar(guitar)}
+                    style={{ '--glow-color': guitar.glowColor || 'rgba(239, 68, 68, 0.5)' }}
+                    className={`snap-start flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[calc((100%-2rem)/3)] rounded-2xl p-5 transition-all duration-300 border text-left space-y-4 hover:scale-[1.02] relative group ${
+                      isSelected
+                        ? `bg-red-950/50 ${guitar.borderColor || 'border-red-500'} wow-border-glow`
+                        : 'bg-[#14080b]/80 border-red-950/80 hover:border-red-900/60 hover:bg-red-950/30'
+                    }`}
+                  >
+                    <div className="flex justify-between items-start gap-2">
+                      <div className="flex flex-wrap gap-1.5">
+                        {tagsList.map((t, i) => (
+                          <span key={i} className="text-[10px] font-chakra font-bold text-red-400/90 tracking-wider bg-red-950/80 px-2 py-0.5 rounded border border-red-900/50 uppercase">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      {isSelected && (
+                        <span className="text-[10px] font-orbitron font-bold text-rose-200 bg-red-950 border border-red-500/80 px-2.5 py-0.5 rounded-full uppercase tracking-widest animate-pulse wow-signal-glow flex-shrink-0">
+                          ACTIVE
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-black/90 border border-red-950 flex items-center justify-center p-2 group-hover:border-red-800/60 transition-colors">
+                      <img
+                        src={guitar.imageUrl}
+                        alt={guitar.name}
+                        className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <h3 className={`font-orbitron font-bold text-base md:text-lg tracking-wide ${isSelected ? 'text-red-200 wow-signal-glow' : 'text-red-300'}`}>
+                        {guitar.name}
+                      </h3>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </section>
 
-        {/* Video Playlist Section */}
+        {/* 詳細説明セクション */}
+        {selectedGuitar && (
+          <section className="bg-[#14080b] border border-red-950 rounded-2xl p-6 md:p-8 space-y-4 shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div className="flex flex-col md:flex-row justify-between md:items-center border-b border-red-950/80 pb-4 gap-2">
+              <div>
+                <span className="text-xs font-chakra text-red-400 uppercase tracking-widest">CURRENT SELECTION // OVERVIEW</span>
+                <h3 className="text-2xl font-bold font-orbitron text-red-200 tracking-wider wow-signal-glow mt-1">
+                  {selectedGuitar.name}
+                </h3>
+              </div>
+            </div>
+            {/* 改行や段落が正しく反映されるように whitespace-pre-line を適用 */}
+            <p className="font-rajdhani text-sm md:text-base text-red-300/90 leading-relaxed max-w-4xl whitespace-pre-line">
+              {selectedGuitar.description}
+            </p>
+          </section>
+        )}
+
+        {/* ライブ演奏動画セクション */}
+        {}
         {selectedGuitar && selectedVideo && (
           <section className="space-y-4">
             <h2 className="text-xl font-bold font-orbitron tracking-widest text-red-500 flex items-center gap-2 wow-signal-glow px-1">
@@ -536,171 +733,6 @@ export default function App() {
           </section>
         )}
 
-        {/* Admin Mode Toggle & Management Area (Bottom of Main Content) */}
-        <section className="pt-8 border-t border-red-950/80 space-y-6">
-          <div className="flex justify-center">
-            <button
-              onClick={() => {
-                if (!isManagerOpen && !isAdminAuthenticated) {
-                  setAdminIdInput('');
-                  setAdminPassInput('');
-                  setAuthError('');
-                }
-                setIsManagerOpen(!isManagerOpen);
-              }}
-              className="px-5 py-2.5 bg-red-950/80 hover:bg-red-900/80 border border-red-600/80 text-red-200 text-xs font-chakra font-bold rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-red-950/50 hover:scale-105"
-            >
-              <span>⚙️</span>
-              <span>{isManagerOpen ? 'CLOSE ADMIN MANAGER' : 'OPEN ADMIN MODE'}</span>
-            </button>
-          </div>
-
-          {isManagerOpen && (
-            <div className="bg-[#180a0d] border border-red-600/60 rounded-2xl p-6 space-y-6 shadow-2xl relative animate-fadeIn">
-              {!isAdminAuthenticated ? (
-                <div className="max-w-md mx-auto py-6 space-y-4 text-center">
-                  <div className="inline-block p-3 rounded-full bg-red-950/80 border border-red-800 text-xl mb-1">🔒</div>
-                  <h3 className="text-xl font-bold font-orbitron text-red-200">ADMIN AUTHENTICATION REQUIRED</h3>
-                  <p className="text-xs font-chakra text-red-400">
-                    管理モードにアクセスするには認証情報の入力が必要です。
-                  </p>
-
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      if (adminIdInput === 'Admin' && adminPassInput === 'muse1984') {
-                        setIsAdminAuthenticated(true);
-                        setAuthError('');
-                      } else {
-                        setAuthError('IDまたはパスワードが正しくありません。');
-                      }
-                    }}
-                    className="space-y-3 pt-2 text-left"
-                  >
-                    <div>
-                      <label className="block text-xs font-chakra text-red-400 mb-1">ID</label>
-                      <input
-                        type="text"
-                        value={adminIdInput}
-                        onChange={(e) => setAdminIdInput(e.target.value)}
-                        className="w-full bg-[#0b0304] border border-red-900 rounded p-2.5 text-red-200 text-xs font-chakra focus:outline-none focus:border-red-500"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-chakra text-red-400 mb-1">PASSWORD</label>
-                      <input
-                        type="password"
-                        value={adminPassInput}
-                        onChange={(e) => setAdminPassInput(e.target.value)}
-                        className="w-full bg-[#0b0304] border border-red-900 rounded p-2.5 text-red-200 text-xs font-chakra focus:outline-none focus:border-red-500"
-                        required
-                      />
-                    </div>
-
-                    {authError && (
-                      <div className="p-2.5 bg-red-950/80 border border-red-700 text-red-300 text-xs font-chakra rounded text-center">
-                        {authError}
-                      </div>
-                    )}
-
-                    <div className="flex gap-2 pt-2">
-                      <button
-                        type="button"
-                        onClick={() => setIsManagerOpen(false)}
-                        className="w-1/2 py-2.5 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 rounded font-bold text-xs font-chakra"
-                      >
-                        キャンセル
-                      </button>
-                      <button
-                        type="submit"
-                        className="w-1/2 py-2.5 bg-red-600 hover:bg-red-500 text-white rounded font-bold text-xs font-chakra shadow-lg shadow-red-950"
-                      >
-                        ログイン
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              ) : (
-                <>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-red-900/60 pb-4 gap-4">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-xl font-bold font-orbitron text-red-200 flex items-center gap-2">
-                          <span>⚙️</span> DATA MANAGEMENT PANEL
-                        </h3>
-                        <span className="text-[10px] bg-red-950 border border-red-600 text-red-300 px-2 py-0.5 rounded font-mono">AUTHENTICATED</span>
-                      </div>
-                      <p className="text-xs font-chakra text-red-400 mt-0.5">
-                        ギターの追加、編集、削除や、JSONデータのエクスポートを行えます。
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-2">
-                      <button
-                        onClick={handleAddNewGuitar}
-                        className="px-3 py-1.5 bg-red-600 hover:bg-red-500 text-white font-bold text-xs font-chakra rounded-md transition-colors flex items-center gap-1"
-                      >
-                        <span>+</span> ギターを新規追加
-                      </button>
-                      <button
-                        onClick={handleCopyJSON}
-                        className="px-3 py-1.5 bg-red-950 hover:bg-red-900 border border-red-700 text-red-300 font-bold text-xs font-chakra rounded-md transition-colors"
-                      >
-                        {copySuccess ? '✓ JSONコピー完了!' : '📋 JSON出力（コピー）'}
-                      </button>
-                      <button
-                        onClick={handleResetData}
-                        className="px-3 py-1.5 bg-zinc-900 hover:bg-red-950 border border-zinc-700 text-zinc-400 hover:text-red-300 font-bold text-xs font-chakra rounded-md transition-colors"
-                      >
-                        🔄 初期化
-                      </button>
-                      <button
-                        onClick={() => setIsAdminAuthenticated(false)}
-                        className="px-3 py-1.5 bg-zinc-900 hover:bg-zinc-800 text-red-400 font-bold text-xs font-chakra rounded-md transition-colors"
-                      >
-                        ログアウト
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[350px] overflow-y-auto cyber-scroll pr-2">
-                    {mansonGuitars.map((g) => (
-                      <div
-                        key={g.id}
-                        className="p-3 bg-[#110507] border border-red-900/50 rounded-xl flex items-center justify-between gap-3"
-                      >
-                        <div className="flex items-center gap-3 overflow-hidden">
-                          <img src={g.imageUrl} alt={g.name} className="w-10 h-10 object-contain rounded bg-black/60 p-1 flex-shrink-0" />
-                          <div className="truncate">
-                            <div className="font-orbitron text-xs font-bold text-red-200 truncate">{g.name}</div>
-                            <div className="text-[10px] font-chakra text-red-400/70 truncate">{g.tag}</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-1 flex-shrink-0">
-                          <button
-                            onClick={() => setEditingGuitar(g)}
-                            className="p-1.5 text-xs bg-red-950 hover:bg-red-800 text-red-200 rounded border border-red-800/60"
-                            title="編集"
-                          >
-                            ✏️
-                          </button>
-                          <button
-                            onClick={() => handleDeleteGuitar(g.id)}
-                            className="p-1.5 text-xs bg-red-950 hover:bg-red-900 text-red-400 hover:text-red-200 rounded border border-red-800/60"
-                            title="削除"
-                          >
-                            🗑️
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-          )}
-        </section>
       </main>
 
       {/* Footer */}
@@ -716,6 +748,7 @@ export default function App() {
       </footer>
 
       {/* ギター編集モーダル */}
+      {}
       {editingGuitar && (
         <GuitarEditModal
           guitar={editingGuitar}
@@ -727,6 +760,7 @@ export default function App() {
   );
 }
 
+// ギター編集用モーダルコンポーネント
 function GuitarEditModal({ guitar, onSave, onClose }) {
   const [formData, setFormData] = useState({ ...guitar });
 
@@ -865,7 +899,7 @@ function GuitarEditModal({ guitar, onSave, onClose }) {
                   />
                   <input
                     type="text"
-                    placeholder="長さ (Length)"
+                    placeholder="2026/07/22"
                     value={vid.length}
                     onChange={(e) => handleVideoChange(idx, 'length', e.target.value)}
                     className="bg-[#140608] border border-red-950 rounded p-1.5 text-red-200"
