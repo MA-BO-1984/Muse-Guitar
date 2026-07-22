@@ -350,36 +350,17 @@ export default function App() {
       {/* Header */}
       <header className="p-6 md:p-10 border-b border-red-950/70 bg-[#120709]/90 backdrop-blur-md relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-60"></div>
-        <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/50 border border-red-800/60 text-[11px] font-chakra text-red-400 mb-2 tracking-widest uppercase">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              SIGNAL DETECTED // 6EQUJ5
-            </div>
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-wider font-orbitron wow-signal-glow bg-gradient-to-r from-red-500 via-rose-200 to-red-600 bg-clip-text text-transparent">
-              MUSE GUITAR GALLERY
-            </h1>
-            <p className="text-red-400/90 font-chakra text-xs md:text-sm mt-1 tracking-wide">
-              MATTHEW BELLAMY SIGNATURE CUSTOM MODELS & LIVE PERFORMANCES
-            </p>
+        <div className="max-w-[1600px] mx-auto text-center md:text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/50 border border-red-800/60 text-[11px] font-chakra text-red-400 mb-2 tracking-widest uppercase">
+            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+            SIGNAL DETECTED // 6EQUJ5
           </div>
-          
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <button
-              onClick={() => {
-                if (!isManagerOpen && !isAdminAuthenticated) {
-                  setAdminIdInput('');
-                  setAdminPassInput('');
-                  setAuthError('');
-                }
-                setIsManagerOpen(!isManagerOpen);
-              }}
-              className="px-4 py-2 bg-red-950/80 hover:bg-red-900/80 border border-red-600 text-red-200 text-xs font-chakra font-bold rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-red-950/50"
-            >
-              <span>⚙️</span>
-              <span>{isManagerOpen ? 'CLOSE MANAGER' : 'Admin Mode'}</span>
-            </button>
-          </div>
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-wider font-orbitron wow-signal-glow bg-gradient-to-r from-red-500 via-rose-200 to-red-600 bg-clip-text text-transparent">
+            MUSE GUITAR GALLERY
+          </h1>
+          <p className="text-red-400/90 font-chakra text-xs md:text-sm mt-1 tracking-wide">
+            MATTHEW BELLAMY SIGNATURE CUSTOM MODELS & LIVE PERFORMANCES
+          </p>
         </div>
       </header>
 
@@ -387,7 +368,6 @@ export default function App() {
       <main className="p-4 md:p-8 space-y-10 max-w-[1600px] mx-auto">
 
         {/* 管理パネル または ログインモーダル */}
-        {}
         {isManagerOpen && (
           <section className="bg-[#180a0d] border border-red-600/60 rounded-2xl p-6 space-y-6 shadow-2xl relative animate-fadeIn">
             {!isAdminAuthenticated ? (
@@ -416,7 +396,6 @@ export default function App() {
                       type="text"
                       value={adminIdInput}
                       onChange={(e) => setAdminIdInput(e.target.value)}
-                      placeholder="Admin"
                       className="w-full bg-[#0b0304] border border-red-900 rounded p-2.5 text-red-200 text-xs font-chakra focus:outline-none focus:border-red-500"
                       required
                     />
@@ -427,7 +406,6 @@ export default function App() {
                       type="password"
                       value={adminPassInput}
                       onChange={(e) => setAdminPassInput(e.target.value)}
-                      placeholder="••••••••"
                       className="w-full bg-[#0b0304] border border-red-900 rounded p-2.5 text-red-200 text-xs font-chakra focus:outline-none focus:border-red-500"
                       required
                     />
@@ -537,7 +515,6 @@ export default function App() {
         )}
 
         {/* ギター選択＆タグフィルターセクション */}
-        {}
         <section className="space-y-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between px-1 gap-3">
             <h2 className="text-xl font-bold font-orbitron tracking-widest text-red-500 flex items-center gap-2 wow-signal-glow">
@@ -652,7 +629,6 @@ export default function App() {
         )}
 
         {/* ライブ演奏動画セクション */}
-        {}
         {selectedGuitar && selectedVideo && (
           <section className="space-y-4">
             <h2 className="text-xl font-bold font-orbitron tracking-widest text-red-500 flex items-center gap-2 wow-signal-glow px-1">
@@ -737,18 +713,33 @@ export default function App() {
 
       {/* Footer */}
       <footer className="mt-16 border-t border-red-950/70 bg-[#120709]/80 py-6 px-4 text-center">
-        <div className="max-w-[1600px] mx-auto space-y-2">
+        <div className="max-w-[1600px] mx-auto space-y-3">
           <p className="text-xs font-chakra text-red-400/80">
             当サイトで使用している画像、写真はサイト制作者に帰属します。
           </p>
           <p className="text-[10px] font-mono text-red-500/60 tracking-wider">
             © MUSE GUITAR GALLERY // ALL RIGHTS RESERVED
           </p>
+          <div className="pt-2 flex justify-center">
+            <button
+              onClick={() => {
+                if (!isManagerOpen && !isAdminAuthenticated) {
+                  setAdminIdInput('');
+                  setAdminPassInput('');
+                  setAuthError('');
+                }
+                setIsManagerOpen(!isManagerOpen);
+              }}
+              className="px-4 py-2 bg-red-950/80 hover:bg-red-900/80 border border-red-600/60 hover:border-red-500 text-red-300 text-xs font-chakra font-bold rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-red-950/50"
+            >
+              <span>⚙️</span>
+              <span>{isManagerOpen ? 'CLOSE MANAGER' : 'Admin Mode'}</span>
+            </button>
+          </div>
         </div>
       </footer>
 
       {/* ギター編集モーダル */}
-      {}
       {editingGuitar && (
         <GuitarEditModal
           guitar={editingGuitar}
