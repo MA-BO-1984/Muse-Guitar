@@ -18,8 +18,46 @@ const getYouTubeEmbedUrl = (url) => {
   return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
 };
 
-// 初期データセット（ユーザーから提供された6件の最新データ）
+// 初期データセット（ユーザーから提供された最新データ順）
 const initialMansonGuitars = [
+  {
+    "id": "guitar-1784703143745",
+    "name": "Verona Sky",
+    "tag": "ST Shape,Tremolo",
+    "accentColor": "from-red-500 to-rose-600",
+    "borderColor": "border-red-500 shadow-red-950/50",
+    "glowColor": "rgba(239, 68, 68, 0.5)",
+    "imageUrl": "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800&auto=format&fit=crop",
+    "description": "Manson製Stratocasterシャイプのシグネチャーモデル。名前の通りWill Of The People収録のVeronaの演奏用に用いられる。特徴的なのはピックアップガードが金属製になっており、ジェフバックリーが生前利用していたテレキャスターも同一で、この仕様により通常のギターより金属感ある煌びやかな音が出るという事を継承させる為に備えたと思われる。",
+    "videos": [
+      {
+        "id": "v1",
+        "song": "Verona",
+        "live": "MV",
+        "length": "04:00",
+        "youtubeUrl": "https://www.youtube.com/watch?v=NN1OtIJu_Bk"
+      }
+    ]
+  },
+  {
+    "id": "guitar-1784698490576",
+    "name": "Chrome FR",
+    "tag": "Floyd Rose,Kill Switch,Sustainer",
+    "accentColor": "from-red-500 to-rose-600",
+    "borderColor": "border-red-500 shadow-red-950/50",
+    "glowColor": "rgba(239, 68, 68, 0.5)",
+    "imageUrl": "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800&auto=format&fit=crop",
+    "description": "2017年のフェスツアーから利用開始。サスティナーとフロイドローズが備わっている事から、それ以外の特殊なデバイスを用いた楽曲以外は本機で再現できる事から近年一番利用頻度が高いギターである。Yes/Noスイッチがついているが、キルスイッチの挙動を反転させる切り替えスイッチとなっている。",
+    "videos": [
+      {
+        "id": "v1",
+        "song": "Sample Song",
+        "live": "Live Performance",
+        "length": "04:00",
+        "youtubeUrl": "https://www.youtube.com/watch?v=8tugqHunwDA"
+      }
+    ]
+  },
   {
     "id": "delorean",
     "name": "Oryx 8-String Midnight Purple",
@@ -87,25 +125,6 @@ const initialMansonGuitars = [
     ]
   },
   {
-    "id": "guitar-1784698490576",
-    "name": "Chrome FR",
-    "tag": "Floyd Rose,Kill Switch,Sustainer",
-    "accentColor": "from-red-500 to-rose-600",
-    "borderColor": "border-red-500 shadow-red-950/50",
-    "glowColor": "rgba(239, 68, 68, 0.5)",
-    "imageUrl": "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800&auto=format&fit=crop",
-    "description": "2017年のフェスツアーから利用開始。サスティナーとフロイドローズが備わっている事から、それ以外の特殊なデバイスを用いた楽曲以外は本機で再現できる事から近年一番利用頻度が高いギターである。Yes/Noスイッチがついているが、キルスイッチの挙動を反転させる切り替えスイッチとなっている。",
-    "videos": [
-      {
-        "id": "v1",
-        "song": "Sample Song",
-        "live": "Live Performance",
-        "length": "04:00",
-        "youtubeUrl": "https://www.youtube.com/watch?v=8tugqHunwDA"
-      }
-    ]
-  },
-  {
     "id": "guitar-1784700031335",
     "name": "Oryx",
     "tag": "Fanned Frets",
@@ -140,25 +159,6 @@ const initialMansonGuitars = [
         "live": "Live Performance",
         "length": "04:00",
         "youtubeUrl": "https://www.youtube.com/watch?v=8tugqHunwDA"
-      }
-    ]
-  },
-  {
-    "id": "guitar-1784703143745",
-    "name": "Verona Sky",
-    "tag": "ST Shape,Tremolo",
-    "accentColor": "from-red-500 to-rose-600",
-    "borderColor": "border-red-500 shadow-red-950/50",
-    "glowColor": "rgba(239, 68, 68, 0.5)",
-    "imageUrl": "https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800&auto=format&fit=crop",
-    "description": "Manson製Stratocasterシャイプのシグネチャーモデル。名前の通りWill Of The People収録のVeronaの演奏用に用いられる。特徴的なのはピックアップガードが金属製になっており、ジェフバックリーが生前利用していたテレキャスターも同一で、この仕様により通常のギターより金属感ある煌びやかな音が出るという事を継承させる為に備えたと思われる。",
-    "videos": [
-      {
-        "id": "v1",
-        "song": "Verona",
-        "live": "MV",
-        "length": "04:00",
-        "youtubeUrl": "https://www.youtube.com/watch?v=NN1OtIJu_Bk"
       }
     ]
   }
