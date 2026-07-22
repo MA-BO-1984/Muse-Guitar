@@ -666,12 +666,13 @@ export default function App() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-[#120709] border border-red-950 rounded-2xl p-4 md:p-6 shadow-2xl">
               <div className="lg:col-span-8 rounded-xl overflow-hidden bg-black border border-red-950 aspect-video relative group flex flex-col justify-between">
+                {}
                 <iframe
                   key={embedBaseUrl}
-                  src={`${embedBaseUrl}?autoplay=1&rel=0`}
+                  src={`${embedBaseUrl}?autoplay=0&rel=0`}
                   title={`${selectedGuitar.name} - ${selectedVideo.song}`}
                   className="w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                 ></iframe>
