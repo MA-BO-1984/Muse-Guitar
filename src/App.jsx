@@ -1,3 +1,4 @@
+// ... existing code ...
 import React, { useState, useEffect } from 'react';
 
 // YouTubeの共有URL（https://youtu.be/... または https://www.youtube.com/watch?v=...）から
@@ -214,20 +215,31 @@ const initialMansonGuitars = [
 
 export default function App() {
   const [mansonGuitars, setMansonGuitars] = useState(() => {
+    let customGuitars = [];
     try {
       const saved = localStorage.getItem('muse_guitars_data_v5');
       if (saved) {
-        return JSON.parse(saved);
+        const parsedSaved = JSON.parse(saved);
+        // キャッシュの中から、ソースコード(initialMansonGuitars)に存在しないIDのギター
+        // つまり「ユーザーが管理画面から新規追加したギター」のみを抽出して保持します。
+        customGuitars = parsedSaved.filter(
+          (savedGuitar) => !initialMansonGuitars.some((initialGuitar) => initialGuitar.id === savedGuitar.id)
+        );
       }
     } catch (e) {
       console.error(e);
     }
-    const shuffled = [...initialMansonGuitars];
-    for (let i = shuffled.length - 1; i > 0; i--) {
+    
+    // 常にソースコードの最新データ(initialMansonGuitars)を正とし、ユーザー追加分をマージします。
+    // これにより、ソースコードで画像URLや動画リンクを更新した際、リロードですぐに反映されます。
+    const combinedGuitars = [...initialMansonGuitars, ...customGuitars];
+
+    // シャッフル
+    for (let i = combinedGuitars.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      [combinedGuitars[i], combinedGuitars[j]] = [combinedGuitars[j], combinedGuitars[i]];
     }
-    return shuffled;
+    return combinedGuitars;
   });
 
   useEffect(() => {
@@ -693,7 +705,6 @@ export default function App() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-[#120709] border border-red-950 rounded-2xl p-4 md:p-6 shadow-2xl">
               <div className="lg:col-span-8 rounded-xl overflow-hidden bg-black border border-red-950 aspect-video relative group flex flex-col justify-between">
-                {}
                 <iframe
                   key={embedBaseUrl}
                   src={`${embedBaseUrl}?autoplay=0&rel=0`}
