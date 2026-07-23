@@ -187,7 +187,7 @@ const initialMansonGuitars = [
         "song": "Supermassive Black Hole",
         "live": "Live Performance",
         "length": "04:00",
-        "youtubeUrl": "https://www.youtube.com/watch?v=8tugqHunwDA"
+        "youtubeUrl": "https://www.youtube.com/watch?v=JbTAJwgPV4g"
       }
     ]
   }
