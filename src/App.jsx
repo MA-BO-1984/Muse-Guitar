@@ -203,17 +203,10 @@ const initialMansonGuitars = [
     "videos": [
       {
         "id": "v1",
-        "song": "Resistance",
-        "live": "Live Performance",
-        "length": "04:00",
-        "youtubeUrl": "https://youtube.com/shorts/pMVzQQKzkjc?si=AoIA9UHb4xO7T_Kj"
-      },
-      {
-        "id": "v2",
         "song": "Showbiz",
         "live": "Live Performance",
         "length": "04:00",
-        "youtubeUrl": "https://www.youtube.com/watch?v=haSZt4N2UJ8"
+        "youtubeUrl": "https://youtu.be/haSZt4N2UJ8?si=9U50p3sauO6g9Hwi"
       }
     ]
   }
