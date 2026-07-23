@@ -43,7 +43,7 @@ const formatImageUrl = (url) => {
   return url;
 };
 
-// 初期データセット（最新のGoogle Drive画像URL・説明文に更新）
+// 初期データセット（「Oryx」にWon't Stand Downのライブ映像を追加）
 const initialMansonGuitars = [
   {
     "id": "m1d1-mirror",
@@ -120,6 +120,12 @@ const initialMansonGuitars = [
         "live": "MV",
         "length": "04:00",
         "youtubeUrl": "https://www.youtube.com/watch?v=GgyQufB1Yic"
+      },
+      {
+        "id": "v-1784774398261",
+        "song": "Won't Stand Down",
+        "live": "Live Performance",
+        "youtubeUrl": "https://www.youtube.com/watch?v=UjXa7So10Yo"
       }
     ]
   },
@@ -260,7 +266,6 @@ export default function App() {
   const [authError, setAuthError] = useState('');
 
   const [editingGuitar, setEditingGuitar] = useState(null);
-  const [copySuccess, setCopySuccess] = useState(false);
   const [selectedTagFilter, setSelectedTagFilter] = useState('ALL');
 
   const allAvailableTags = React.useMemo(() => {
