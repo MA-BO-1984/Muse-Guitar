@@ -192,7 +192,7 @@ const initialMansonGuitars = [
     ]
   },
   {
-    "id": "guitar-1784699177190",
+    "id": "guitar-1784699177191",
     "name": "MB-1 Blue",
     "tag": "Sustainer",
     "accentColor": "from-red-500 to-rose-600",
