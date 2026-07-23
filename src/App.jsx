@@ -213,7 +213,7 @@ const initialMansonGuitars = [
         "song": "Showbiz",
         "live": "Live Performance",
         "length": "04:00",
-        "youtubeUrl": "http://xn--youtube-n83fmp.com/watch?v=haSZt4N2UJ8"
+        "youtubeUrl": "https://www.youtube.com/watch?v=haSZt4N2UJ8"
       }
     ]
   }
