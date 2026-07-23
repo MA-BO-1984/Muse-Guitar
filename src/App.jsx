@@ -332,11 +332,18 @@ export default function App() {
     setSelectedTagFilter('ALL');
   };
 
-  const handleCopyJSON = () => {
+  const handleExportJSON = () => {
     const jsonStr = JSON.stringify(mansonGuitars, null, 2);
-    navigator.clipboard.writeText(jsonStr);
-    setCopySuccess(true);
-    setTimeout(() => setCopySuccess(false), 2500);
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const dateStr = new Date().toISOString().slice(0, 10);
+    a.download = `muse_guitars_data_${dateStr}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   const embedBaseUrl = getYouTubeEmbedUrl(selectedVideo?.youtubeUrl);
@@ -485,10 +492,10 @@ export default function App() {
                       <span>+</span> ギターを新規追加
                     </button>
                     <button
-                      onClick={handleCopyJSON}
-                      className="px-3 py-1.5 bg-red-950 hover:bg-red-900 border border-red-700 text-red-300 font-bold text-xs font-chakra rounded-md transition-colors"
+                      onClick={handleExportJSON}
+                      className="px-3 py-1.5 bg-red-950 hover:bg-red-900 border border-red-700 text-red-300 font-bold text-xs font-chakra rounded-md transition-colors flex items-center gap-1"
                     >
-                      {copySuccess ? '✓ JSONコピー完了!' : '📋 JSON出力（コピー）'}
+                      💾 JSONファイル保存
                     </button>
                     <button
                       onClick={handleResetData}
