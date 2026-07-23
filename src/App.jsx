@@ -190,6 +190,32 @@ const initialMansonGuitars = [
         "youtubeUrl": "https://www.youtube.com/watch?v=JbTAJwgPV4g"
       }
     ]
+  },
+  {
+    "id": "guitar-1784699177190",
+    "name": "MB-1 Blue",
+    "tag": "Sustainer",
+    "accentColor": "from-red-500 to-rose-600",
+    "borderColor": "border-red-500 shadow-red-950/50",
+    "glowColor": "rgba(239, 68, 68, 0.5)",
+    "imageUrl": "https://drive.google.com/file/d/1gKvehFwLTlRja4SSRqcjHsgU6J9REsnq/view?usp=sharing",
+    "description": "2023年のWOTPツアーから利用。サスティナーのみ装備し、MUSEの中でスタンダードな仕様となる1本。本ツアーのTime is Running Out、Madness、Resistance等で利用された。Rock Werchter 2023にて機材トラブルでKnights Of Cydoniaが演奏できなくなり、代わりにサプライズで披露したShowbiz演奏後に破壊された。",
+    "videos": [
+      {
+        "id": "v1",
+        "song": "Resistance",
+        "live": "Live Performance",
+        "length": "04:00",
+        "youtubeUrl": "https://youtube.com/shorts/pMVzQQKzkjc?si=AoIA9UHb4xO7T_Kj"
+      },
+      {
+        "id": "v2",
+        "song": "Showbiz",
+        "live": "Live Performance",
+        "length": "04:00",
+        "youtubeUrl": "http://xn--youtube-n83fmp.com/watch?v=haSZt4N2UJ8"
+      }
+    ]
   }
 ];
 
