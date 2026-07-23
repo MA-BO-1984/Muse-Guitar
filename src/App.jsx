@@ -35,7 +35,8 @@ const formatImageUrl = (url) => {
       }
     }
     if (fileId) {
-      return `https://lh3.googleusercontent.com/d/${fileId}`;
+      // 枠に合わせて綺麗に拡大・縮小されるよう高画質用パラメータ(=s1600)を付与
+      return `https://lh3.googleusercontent.com/d/${fileId}=s1600`;
     }
   }
   return url;
@@ -609,11 +610,11 @@ export default function App() {
                       )}
                     </div>
 
-                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-black/90 border border-red-950 flex items-center justify-center p-2 group-hover:border-red-800/60 transition-colors">
+                    <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-black/90 border border-red-950 flex items-center justify-center group-hover:border-red-800/60 transition-colors">
                       <img
                         src={formatImageUrl(guitar.imageUrl)}
                         alt={guitar.name}
-                        className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(239,68,68,0.3)]"
+                        className="w-full h-full object-cover filter drop-shadow-[0_0_10px_rgba(239,68,68,0.3)] transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
 
